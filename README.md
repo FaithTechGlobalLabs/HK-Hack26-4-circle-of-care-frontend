@@ -58,3 +58,11 @@ src/lib/theme.ts          design tokens (colours, category tints, fonts)
 src/lib/registry.tsx      styled-components SSR registry
 src/lib/useResource.ts    fetch + poll hook
 ```
+
+## Dev server not picking up changes (WSL on the Windows drive)
+
+If the code lives under `/mnt/c` in WSL, Next.js doesn't see file changes. Turn on polling:
+
+```bash
+WATCH_POLL_MS=1000 npm run dev
+```
