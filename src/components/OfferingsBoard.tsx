@@ -16,7 +16,7 @@ export default function OfferingsBoard() {
   return (
     <BoardLayout
       title="Who's offering to help"
-      intro="Volunteers told the WhatsApp bot what they can give. Contact details stay private; a coordinator matches them with people who need help."
+      intro="People told the WhatsApp bot what they can give and agreed to share it. Where they also agreed to share their number, you can message them on WhatsApp."
       columns={["Offer"]}
       emptyText="No offers of help yet. New ones appear here as soon as a volunteer shares one."
       filters={boardFilters}

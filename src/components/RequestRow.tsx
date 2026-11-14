@@ -76,26 +76,6 @@ export const Tags = styled.div`
   gap: 6px;
 `;
 
-const Count = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-
-  b {
-    font-family: ${({ theme }) => theme.fonts.cond};
-    font-size: 2.3rem;
-    font-weight: 700;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  span {
-    max-width: 72px;
-    font-size: 0.82rem;
-    color: ${({ theme }) => theme.colors.muted};
-  }
-`;
-
 const ContactLinkStyled = styled.a`
   position: relative;
   z-index: 1;
@@ -156,10 +136,6 @@ export default function RequestRow({ req }: { req: CareRequest }) {
         </Tags>
         <Contact phone={req.contact_phone} link={req.contact_link} />
       </Body>
-      <Count>
-        <b>{req.still_needed}</b>
-        <span>{req.helpers_wanted > 1 ? `of ${req.helpers_wanted} helpers` : "helper"}</span>
-      </Count>
     </Row>
   );
 }

@@ -16,8 +16,8 @@ export default function Board() {
   return (
     <BoardLayout
       title="Who can you help this week?"
-      intro="People asked for help on WhatsApp and agreed to share these summaries. Names and numbers stay private; a coordinator connects you."
-      columns={["Request", "Still needed"]}
+      intro="People asked for help on WhatsApp and agreed to share these notes. Where they also agreed to share their number, you can message them on WhatsApp. Names stay private."
+      columns={["Request"]}
       emptyText="No open requests right now. New ones appear here as soon as someone agrees to share."
       filters={boardFilters}
       options={data}

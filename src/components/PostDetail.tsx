@@ -230,7 +230,6 @@ function PostView({ post }: { post: Post }) {
             </Fact>
           )}
           {!isNeed && <Fact label="Available">{post.availability || "Not given"}</Fact>}
-          {isNeed && <Fact label="Helpers wanted">{post.helpers_wanted}</Fact>}
           <Fact label="Language">{post.language}</Fact>
           <Fact label="Status">{post.status_label}</Fact>
         </Facts>
