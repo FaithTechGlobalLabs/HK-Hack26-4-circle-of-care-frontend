@@ -20,8 +20,8 @@ export const theme = {
     food: { color: "#A55A00", tint: "#FDEBD3" },
     medical: { color: "#B5162F", tint: "#FBE1E4" },
     social: { color: "#0B7A57", tint: "#DDF2EA" },
-    spiritual: { color: "#6B3FA0", tint: "#ECE5F7" },
-    heart: { color: "#A82D63", tint: "#FBE3EE" },
+    prayer: { color: "#6B3FA0", tint: "#ECE5F7" },
+    other: { color: "#4B5768", tint: "#E9EDF2" },
   } as Record<string, { color: string; tint: string }>,
   fonts: {
     body: 'var(--font-barlow), "Noto Sans HK", system-ui, -apple-system, sans-serif',
