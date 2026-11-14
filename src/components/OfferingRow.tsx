@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import type { Offering } from "@/lib/types";
-import { Body, Contact, Meta, metaLine, Row, Summary, Tags } from "./RequestRow";
+import { Body, Contact, Meta, metaLine, Row, SummaryLink, Tags } from "./RequestRow";
 import { CategoryBlock, Tag } from "./ui";
 
 const Availability = styled.p`
@@ -23,7 +23,7 @@ export default function OfferingRow({ offering }: { offering: Offering }) {
     <Row>
       <CategoryBlock category={offering.category} />
       <Body>
-        <Summary>{offering.summary}</Summary>
+        <SummaryLink id={offering.id}>{offering.summary}</SummaryLink>
         <Meta>{metaLine(offering, true)}</Meta>
         {offering.offers.length > 0 && (
           <Tags>
