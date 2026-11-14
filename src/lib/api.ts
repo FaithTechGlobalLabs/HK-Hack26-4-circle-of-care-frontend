@@ -1,4 +1,4 @@
-import type { BoardFilters, BoardResponse, FieldErrors, OfferingsResponse } from "./types";
+import type { BoardFilters, BoardResponse, FieldErrors, OfferingsResponse, Post } from "./types";
 
 // All calls go to /api/* on this Next app; next.config rewrites them to Django (API_URL),
 // adding Django's trailing slash. So paths here never end with "/".
@@ -88,3 +88,5 @@ export const getBoard = (filters: BoardFilters) =>
 
 export const getOfferings = (filters: BoardFilters) =>
   request<OfferingsResponse>(withFilters("/offerings", filters));
+
+export const getPost = (id: string | number) => request<Post>(`/posts/${encodeURIComponent(String(id))}`);

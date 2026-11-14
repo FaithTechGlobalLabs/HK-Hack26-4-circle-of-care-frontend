@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import type { ReactNode } from "react";
 import styled from "styled-components";
 import { timeAgo } from "@/lib/format";
 import type { CareRequest } from "@/lib/types";
@@ -7,6 +9,7 @@ import Icon from "./Icon";
 import { CategoryBlock, Tag } from "./ui";
 
 export const Row = styled.article`
+  position: relative;
   display: flex;
   gap: 14px;
   padding: 16px 0;
@@ -28,6 +31,39 @@ export const Summary = styled.p`
   line-height: 1.35;
   overflow-wrap: anywhere;
 `;
+
+/** The summary links to the post. Its ::after stretches over the whole row so the row is clickable,
+ * while the WhatsApp link sits above it and stays clickable on its own. */
+const SummaryLinkStyled = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  &:focus-visible {
+    outline: none;
+  }
+  &:focus-visible::after {
+    outline: 3px solid ${({ theme }) => theme.colors.primary};
+    outline-offset: 2px;
+  }
+`;
+
+export function SummaryLink({ id, children }: { id: number; children: ReactNode }) {
+  return (
+    <Summary>
+      <SummaryLinkStyled href={`/posts/${id}`}>{children}</SummaryLinkStyled>
+    </Summary>
+  );
+}
 
 export const Meta = styled.p`
   font-size: 0.92rem;
@@ -61,6 +97,8 @@ const Count = styled.div`
 `;
 
 const ContactLinkStyled = styled.a`
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -108,7 +146,7 @@ export default function RequestRow({ req }: { req: CareRequest }) {
     <Row>
       <CategoryBlock category={req.category} />
       <Body>
-        <Summary>{req.summary}</Summary>
+        <SummaryLink id={req.id}>{req.summary}</SummaryLink>
         <Meta>{metaLine(req, true)}</Meta>
         <Tags>
           {req.urgency === "high" && <Tag $urgent>{req.urgency_label || "Today or tomorrow"}</Tag>}

@@ -57,3 +57,34 @@ export interface BoardFilters {
   category?: string;
   district?: string;
 }
+
+/** One board post of either kind, as returned by /api/posts/<id>. Never includes the chat messages. */
+export interface Post {
+  id: number;
+  ref: string;
+  kind: "need" | "offer";
+  kind_label: string;
+  category: string;
+  category_label: string;
+  district: string;
+  urgency: Urgency;
+  urgency_label: string;
+  status: string;
+  status_label: string;
+  /** What would help (needs) or what they can give (offers). */
+  needs: string[];
+  household: string[];
+  availability: string;
+  summary: string;
+  /** Fuller anonymous write-up; may be empty on older posts. */
+  details: string;
+  helpers_wanted: number;
+  contact_phone: string;
+  contact_link: string;
+  language: string;
+  message_count: number;
+  started_at: string | null;
+  last_message_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
